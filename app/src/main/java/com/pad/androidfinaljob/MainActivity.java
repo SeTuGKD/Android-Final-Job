@@ -3,13 +3,10 @@ package com.pad.androidfinaljob;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private MyAdapter mAdapter;
     private List<VideoInfo> mVideoInfos;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     List<VideoInfo> videoInfos = response.body();
                     Log.d("retrofit", videoInfos.toString());
                     if (videoInfos.size() != 0) {
+                        mAdapter.setContext(getApplicationContext());
                         mAdapter.setData(videoInfos);
                         mAdapter.notifyDataSetChanged();
                     }
