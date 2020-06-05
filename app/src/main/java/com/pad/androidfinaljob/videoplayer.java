@@ -4,30 +4,16 @@ import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.PointF;
-import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import android.widget.VideoView;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.IOException;
 
 public class videoplayer extends AppCompatActivity {
     private VideoView videoView;
@@ -37,12 +23,19 @@ public class videoplayer extends AppCompatActivity {
     private RelativeLayout rlLike;
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.videoplayer);
 
-        String videoUrl2 = "http://jzvd.nathen.cn/video/1137e480-170bac9c523-0007-1823-c86-de200.mp4" ;
+
+        //接受Url参数
+        String mURL = getIntent().getStringExtra("mURL");
+
+        String videoUrl2 =  mURL;
         Uri uri = Uri.parse( videoUrl2 );
         videoView = (VideoView)this.findViewById(R.id.videoView );
         videoView.setVideoURI(uri);
@@ -133,6 +126,27 @@ public class videoplayer extends AppCompatActivity {
                     * fraction * fraction * (point3.y);
 
             return point;
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent){
+        super.onNewIntent(intent);
+        String result;
+        if(intent!=null){
+            result = intent.getStringExtra("mURL");
+            setIntent(intent);
+        }
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Intent intent = getIntent();
+        if(intent!=null){
+            String result = intent.getStringExtra("mURL");
         }
     }
 
