@@ -1,6 +1,8 @@
 package com.pad.androidfinaljob;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.pad.androidfinaljob.MainActivity;
+
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private List<VideoInfo> mDataset;
@@ -70,7 +74,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Toast.makeText(v.getContext(), "position" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mcontext,videoplayer.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                mcontext.startActivity(intent);
             }
         };
         holder.cover.setOnClickListener(clickListener);
