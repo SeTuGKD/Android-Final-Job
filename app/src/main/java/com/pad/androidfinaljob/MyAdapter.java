@@ -3,6 +3,7 @@ package com.pad.androidfinaljob;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,8 +76,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(v.getContext(), "position" + position, Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(mcontext,videoplayer.class);
+                Toast.makeText(v.getContext(), "url:" + position, Toast.LENGTH_SHORT).show();
+                Log.d("URL", mDataset.get(position).feedUrl);//视频地址
+                Intent intent = new Intent(mcontext, videoplayer.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mcontext.startActivity(intent);
             }
