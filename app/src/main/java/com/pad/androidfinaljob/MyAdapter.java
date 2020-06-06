@@ -3,6 +3,7 @@ package com.pad.androidfinaljob;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,8 +79,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 Toast.makeText(v.getContext(), "url:" + position, Toast.LENGTH_SHORT).show();
                 Log.d("URL", mDataset.get(position).feedUrl);//视频地址
-                Intent intent = new Intent(mcontext, videoplayer.class);
+                String temp = mDataset.get(position).feedUrl;
+                Log.d("URL", temp);//视频地址
+
+                Intent intent = new Intent(mcontext, videoplayer.class);//选择跳转到的页面
+                intent.putExtra("mURL",temp);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                Bundle bundle = new Bundle();
+//                bundle.putString("mURL",temp);
+//                intent.putExtras(bundle);
                 mcontext.startActivity(intent);
             }
         };
@@ -90,4 +98,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public int getItemCount() {
         return mDataset == null ? 0 : mDataset.size();
     }
+
 }
