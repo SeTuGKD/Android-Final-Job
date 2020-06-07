@@ -22,10 +22,6 @@ public class videoplayer extends AppCompatActivity {
     private int width,height;
     private RelativeLayout rlLike;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

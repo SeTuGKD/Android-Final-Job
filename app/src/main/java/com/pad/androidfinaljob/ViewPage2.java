@@ -1,42 +1,43 @@
 package com.pad.androidfinaljob;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class ViewPage2 extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private MyAdapter mAdapter;
+    private MyAdapter2 mAdapter;
     private List<VideoInfo> mVideoInfos;
 
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.view_page2);
 
-        findViewById(R.id.btn_VP1to2).setOnClickListener(this);
-        recyclerView = (RecyclerView)findViewById(R.id.RV_covers);
-        layoutManager = new LinearLayoutManager(this);
+        Log.d("url", "koko");
+        findViewById(R.id.btn_VP2to1).setOnClickListener(this);
+        recyclerView = (RecyclerView)findViewById(R.id.RV_covers2);
+        layoutManager = new MyLinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         mVideoInfos = new ArrayList<>();
-        mAdapter = new MyAdapter();
+        mAdapter = new MyAdapter2();
         recyclerView.setAdapter(mAdapter);
         getData();
     }
@@ -72,9 +73,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_VP1to2:
-                Log.d("URL", "1to2");
-                startActivity(new Intent(this, ViewPage2.class));
+            case R.id.btn_VP2to1:
+                Log.d("URL", "2to1");
+                startActivity(new Intent(this, MainActivity.class));
                 break;
         }
     }

@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_head"
+            android:id="@+id/tv_head2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -20,42 +20,42 @@
             android:textSize="22dp" />
 
         <LinearLayout
-            android:id="@+id/main_bar"
+            android:id="@+id/main_bar2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_home"
+                android:id="@+id/btn_home2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="首页" />
 
             <Button
-                android:id="@+id/btn_VP1to2"
+                android:id="@+id/btn_VP2to1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="VP2" />
+                android:text="VP1" />
 
             <Button
-                android:id="@+id/btn_upload"
+                android:id="@+id/btn_upload2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="+" />
 
             <Button
-                android:id="@+id/btn_msg"
+                android:id="@+id/btn_msg2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="消息" />
 
             <Button
-                android:id="@+id/btn_me"
+                android:id="@+id/btn_me2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -63,11 +63,11 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RV_covers"
+            android:id="@+id/RV_covers2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/main_bar"
-            android:layout_below="@id/tv_head" />
+            android:layout_above="@id/main_bar2"
+            android:layout_below="@id/tv_head2" />
 
     </RelativeLayout>
 
