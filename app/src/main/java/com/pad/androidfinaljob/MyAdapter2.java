@@ -2,6 +2,7 @@ package com.pad.androidfinaljob;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -28,6 +30,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder2> {
         public TextView like;
         public ImageButton cover;
         public ImageView start;
+        public VideoView video;
 
 
         public MyViewHolder2(View v) {
@@ -37,6 +40,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder2> {
             like = v.findViewById(R.id.tv_like2);
             cover = v.findViewById(R.id.ibtn_cover2);
             start = v.findViewById(R.id.iv_start2);
+            video = v.findViewById(R.id.videoView2);
         }
     }
 
@@ -72,6 +76,12 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder2> {
                 .load(mDataset.get(position).feedUrl)
                 .into(holder.cover);
         holder.like.setText("点赞：" + Integer.toString(mDataset.get(position).likeCount));
+
+        holder.start.animate().alpha(0f).setDuration(200);
+        holder.cover.animate().alpha(0f).setDuration(2000);
+        holder.video.setVideoURI(Uri.parse(mDataset.get(position).feedUrl));
+        holder.video.start();
+
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
