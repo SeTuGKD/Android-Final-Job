@@ -2,8 +2,6 @@ package com.pad.androidfinaljob;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 /**
  * "_id":"5e9830b0ce330a0248e89d86",
  * "feedurl":"http://jzvd.nathen.cn/video/1137e480-170bac9c523-0007-1823-c86-de200.mp4",

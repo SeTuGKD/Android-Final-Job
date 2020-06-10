@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         ApiService apiService = retrofit.create(ApiService.class);
-        apiService.getArticles().enqueue(new Callback<List<VideoInfo>>() {
+        apiService.getVideos().enqueue(new Callback<List<VideoInfo>>() {
             @Override
             public void onResponse(Call<List<VideoInfo>> call, Response<List<VideoInfo>> response) {
                 if (response.body() != null) {

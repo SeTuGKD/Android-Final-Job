@@ -56,29 +56,24 @@ public class MyLinearLayoutManager extends LinearLayoutManager {
     @Override
     public void onScrollStateChanged(int state) {
         switch (state) {
-            case RecyclerView.SCROLL_STATE_IDLE:
+            case RecyclerView.SCROLL_STATE_IDLE:    //空闲状态
                 View viewIdle = mPagerSnapHelper.findSnapView(this);
                 int positionIdle = getPosition(viewIdle);
-                if (mOnViewPagerListener != null && getChildCount() == 1) {
+                if (mOnViewPagerListener != null && getChildCount() == 1) { //item只有一个
                     mOnViewPagerListener.onPageSelected(positionIdle,positionIdle == getItemCount() - 1);
                 }
                 break;
-            case RecyclerView.SCROLL_STATE_DRAGGING:
-                View viewDrag = mPagerSnapHelper.findSnapView(this);
-                int positionDrag = getPosition(viewDrag);
-                break;
+            case RecyclerView.SCROLL_STATE_DRAGGING:        //滑动状态
             case RecyclerView.SCROLL_STATE_SETTLING:
-                View viewSettling = mPagerSnapHelper.findSnapView(this);
-                int positionSettling = getPosition(viewSettling);
+                View viewDrag = mPagerSnapHelper.findSnapView(this);
+                if (viewDrag != null) {
+                    getPosition(viewDrag);
+                }
                 break;
         }
     }
     /**
-     * 监听竖直方向的相对偏移量
-     * @param dy
-     * @param recycler
-     * @param state
-     * @return
+     * 监听竖直方向的相对偏移量 dy
      */
     @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
@@ -87,11 +82,7 @@ public class MyLinearLayoutManager extends LinearLayoutManager {
     }
 
     /**
-     * 监听水平方向的相对偏移量
-     * @param dx
-     * @param recycler
-     * @param state
-     * @return
+     * 监听水平方向的相对偏移量 dx
      */
     @Override
     public int scrollHorizontallyBy(int dx, RecyclerView.Recycler recycler, RecyclerView.State state) {
@@ -99,11 +90,7 @@ public class MyLinearLayoutManager extends LinearLayoutManager {
         return super.scrollHorizontallyBy(dx, recycler, state);
     }
 
-    /**
-     * 设置监听
-     * @param listener
-     */
-    public void setOnViewPagerListener(OnViewPagerListener listener){
+    public void setOnViewPagerListener(OnViewPagerListener listener){ //设置监听
         this.mOnViewPagerListener = listener;
     }
 
